@@ -22,14 +22,13 @@ You'll need the following installed to run the template successfully:
 * Redis - For ActionCable support
 * bundler - `gem install bundler`
 * rails - `gem install rails`
-* Yarn - `brew install yarn` or [Install Yarn](https://yarnpkg.com/en/docs/install)
 * Foreman (optional) - `gem install foreman` - helps run all your
   processes in development
 
 #### Creating a new app
 
 ```bash
-rails new myapp -d postgresql -m https://raw.githubusercontent.com/excid3/jumpstart/master/template.rb
+rails new myapp -d postgresql -m https://raw.githubusercontent.com/sikandartariq1/jumpstart/master/template.rb
 ```
 
 Or if you have downloaded this repo, you can reference template.rb locally:
@@ -37,43 +36,6 @@ Or if you have downloaded this repo, you can reference template.rb locally:
 ```bash
 rails new myapp -d postgresql -m template.rb
 ```
-
-To run your app, use `foreman start`.
-
-This will run `Procfile.dev` via `foreman start -f Procfile.dev` as configured by the `.foreman` file and will launch the development processes `rails server`, `sidekiq`, and `webpack-dev-server` processes. You can also run them in separate terminals manually if you prefer.
-
-A separate `Procfile` is generated for deploying to production.
-
-#### Authenticate with social networks
-
-We use the encrypted Rails Credentials for app_id and app_secrets when it comes to omniauth authentication. Edit them as so:
-
-```
-EDITOR=vim rails credentials:edit
-```
-
-Make sure your file follow this structure:
-
-```yml
-secret_key_base: [your-key]
-development:
-  github:
-    app_id: something
-    app_secret: something
-    options:
-      scope: 'user:email'
-      whatever: true
-production:
-  github:
-    app_id: something
-    app_secret: something
-    options:
-      scope: 'user:email'
-      whatever: true
-```
-
-With the environment, the service and the app_id/app_secret. If this is done correctly, you should see login links
-for the services you have added to the encrypted credentials using `EDITOR=vim rails credentials:edit`
 
 #### Cleaning up
 
